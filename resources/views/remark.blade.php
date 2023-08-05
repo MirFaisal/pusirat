@@ -23,7 +23,7 @@
                 @endforeach
             </div>
             @else
-            <p class="alert alert-warning">Not avoidable</p>
+            <p class="alert alert-warning">Not avoidable </p>
             @endif
 
             <!--  -->
