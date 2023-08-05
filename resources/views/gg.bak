@@ -1,0 +1,107 @@
+ <div uk-filter=".js-filter; animation: slide">
+        <div uk-filter="target: .js-filter">
+            <!-- Filter controls -->
+            <div>
+                <button
+                    class="uk-active"
+                    uk-filter-control="filter: .responsible"
+                >
+                    Responsible
+                </button>
+                <button uk-filter-control="filter: .investigator">
+                    Investigator
+                </button>
+            </div>
+
+            <!-- Layout items -->
+            <div class="js-filter">
+                <div class="responsible">
+                    @if($responsibles)
+                    <div class="mt-5">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th>#</th>
+                                    <th>File</th>
+                                    <th>Title</th>
+                                    <th>Responsible</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($responsibles as $key=> $responsible)
+
+                                <tr class="table-primary">
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>
+                                        {{ $responsible->getFilenumber($responsible->test_file_id) }}
+                                    </td>
+                                    <td>
+                                        {{$responsible->getFileTitle($responsible->test_file_id)}}
+                                    </td>
+                                    <td>
+                                        {{$responsible->getFileResponsibile($responsible->test_file_id)}}
+                                    </td>
+                                    <td>
+                                        <a
+                                            class="btn btn-info btn-sm text-white"
+                                            href="{{route('file.details.show', $responsible->test_file_id)}}"
+                                        >
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+                </div>
+
+                <div class="investigator">
+                    @if($investigators)
+                    <div class="mt-5">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th>#</th>
+                                    <th>File</th>
+                                    <th>Title</th>
+                                    <th>Investigator</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($investigators as $key=> $investigator)
+
+                                <tr class="table-primary">
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>
+                                        {{ $investigator->getFilenumber($investigator->test_file_id) }}
+                                    </td>
+                                    <td>
+                                        {{$investigator->getFileTitle($investigator->test_file_id)}}
+                                    </td>
+                                    <td>
+                                        {{$investigator->getFileResponsibile($investigator->test_file_id)}}
+                                    </td>
+                                    <td>
+                                        <a
+                                            class="btn btn-info btn-sm text-white"
+                                            href="{{route('file.details.show', $investigator->test_file_id)}}"
+                                        >
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
